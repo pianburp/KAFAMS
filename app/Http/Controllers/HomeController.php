@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function redirectToDashboard()
+    {
+        // Redirects to the 'home' route
+        return redirect()->route('welcome');
+    }
 }
