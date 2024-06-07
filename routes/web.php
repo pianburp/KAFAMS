@@ -18,6 +18,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [App\Http\Controllers\HomeController::class, 'update'])->name('profile.update');
     Route::post('/logout', [App\Http\Controllers\Controller::class, 'logout'])->name('logout');
 });
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
+Route::post('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 
 Route::get('/manageActivity/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('edit');
 Route::get('/manageActivity', [App\Http\Controllers\activityController::class, 'index'])->name('manageActivity');

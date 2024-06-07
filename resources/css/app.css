@@ -1,0 +1,20 @@
+/* Default styles (for mobile-first approach) */
+.div-responsive {
+    width: 100%;
+    padding: 20px;
+    background: #f4f4f4;
+  }
+  
+  /* Larger screens */
+  @media (min-width: 768px) {
+    .div-responsive {
+      width: 50%; /* Half-width on tablets and larger screens */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .div-responsive {
+      width: 33.33%; /* One-third width on desktops */
+    }
+  }
+  

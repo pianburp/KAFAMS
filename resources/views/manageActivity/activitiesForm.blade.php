@@ -11,7 +11,7 @@
                 @csrf 
                     <div class="mb-3">
                         <label for="nameInput" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="nameInput" placeholder="Enter name">
+                        <input type="text" class="form-control" id="nameInput" placeholder="Enter activity name">
                     </div>
                     <div class="mb-3">
                         <label for="descriptionInput" class="form-label">Description</label>
@@ -35,4 +35,5 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 @endsection
