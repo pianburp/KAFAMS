@@ -30,4 +30,9 @@ class HomeController extends Controller
         // Redirects to the 'home' route
         return redirect()->route('welcome');
     }
+    public function login()
+    {
+        // Your login logic or return a login view
+        return view('auth.login');
+    }
 }

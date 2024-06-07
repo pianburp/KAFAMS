@@ -11,7 +11,7 @@
                     <a class="nav-link active" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Manage Activity</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
@@ -28,7 +28,8 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Form Title</h5>
-                <form>
+                <form action="{{ route('manageActivity/store') }}" method="POST">
+                @csrf 
                     <div class="mb-3">
                         <label for="nameInput" class="form-label">Name</label>
                         <input type="text" class="form-control" id="nameInput" placeholder="Enter name">
@@ -41,8 +42,8 @@
                         <label for="statusSelect" class="form-label">Status</label>
                         <select class="form-select" id="statusSelect">
                             <option selected>Choose...</option>
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
+                            <option value="1">Approve</option>
+                            <option value="0">Not Approve</option>
                         </select>
                     </div>
                     <div class="mb-3">
