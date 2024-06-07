@@ -38,8 +38,7 @@
         <h1>KAFA Management System!</h1>
         <p>This is our new awesome KAFAMS application.</p> 
     </div>
-    <div class="container mt-5">
-    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bharian.com.my%2Fberita%2Fpendidikan%2F2023%2F02%2F1070179%2Fkelas-aliran-agama-alternatif-smka&psig=AOvVaw2bfoqck9lYrfFMJajG3ejl&ust=1717830861721000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOC4ieb4yIYDFQAAAAAdAAAAABAQ" class="img-thumbnail" alt="...">
+  <div class="container mt-5">
   <div class="row">
     <div class="col-sm-4">
       <h3>Column 1</h3>
