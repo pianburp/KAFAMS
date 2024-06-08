@@ -16,15 +16,13 @@ Route::get('/home', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('profile.index');
     Route::post('/profile', [App\Http\Controllers\HomeController::class, 'update'])->name('profile.update');
-    Route::post('/logout', [App\Http\Controllers\Controller::class, 'logout'])->name('logout');
 });
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/login');
+    return redirect('/');
 })->name('logout');
-Route::post('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 
-Route::get('/manageActivity/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('edit');
+Route::get('/manageActivity/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('manageActivity/edit');
 Route::get('/manageActivity', [App\Http\Controllers\activityController::class, 'index'])->name('manageActivity');
-Route::get('/manageActivity/create', [App\Http\Controllers\activityController::class, 'create'])->name('create');
+Route::get('/manageActivity/create', [App\Http\Controllers\activityController::class, 'create'])->name('manageActivity/create');
 Route::post('/manageActivity/store', [App\Http\Controllers\activityController::class,'store'])->name('manageActivity/store');

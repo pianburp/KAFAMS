@@ -14,7 +14,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
+    <!-- Scripts -->  
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link rel="stylesheet" href="css\app.css">
 </head>
@@ -58,7 +58,7 @@
                                 <a class="nav-link active" href="{{ url('/home') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/manageActivity/create') }}">Manage Activity</a>
+                                <a class="nav-link" href="{{ url('/manageActivity') }}">Manage Activity</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Pricing</a>

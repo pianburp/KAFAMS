@@ -6,9 +6,10 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Form Title</h5>
+                    <h2 class="card-title mb-0">Add Activity</h2>
+                <br>
                 <form action="{{ route('manageActivity/store') }}" method="POST">
-                @csrf 
+                    @csrf
                     <div class="mb-3">
                         <label for="nameInput" class="form-label">Name</label>
                         <input type="text" class="form-control" id="nameInput" placeholder="Enter activity name">
@@ -35,5 +36,6 @@
         </div>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 @endsection

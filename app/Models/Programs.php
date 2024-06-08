@@ -8,13 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Programs extends Model
 {
     use HasFactory;
-    public function index()
-    {
-        // Fetch all class entries from the database
-        $items = Programs::all();
-
-        // Return the listing view and pass the items to it
-        return view('listing', compact('items'));
-    }
+    protected $fillable = ['program_name', 'program_description', 'program_status', 'program_date'];
+    protected $casts = [
+        'program_date' => 'datetime', // Example if program_date is a date
+    ];
 }
-
