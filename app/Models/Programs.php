@@ -10,6 +10,6 @@ class Programs extends Model
     use HasFactory;
     protected $fillable = ['program_name', 'program_description', 'program_status', 'program_date'];
     protected $casts = [
-        'program_date' => 'datetime', // Example if program_date is a date
+        'program_date' => 'datetime',
     ];
 }
