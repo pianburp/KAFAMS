@@ -1,19 +1,15 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <h1>Results</h1>
-    <a href="{{ route('results.create') }}">Create New Result</a>
-    <ul>
-        @foreach ($results as $result)
-            <li>
-                <a href="{{ route('results.show', $result->id) }}">{{ $result->user->name }} - {{ $result->score }} - {{ $result->grade }}</a>
-                <a href="{{ route('results.edit', $result->id) }}">Edit</a>
-                <form action="{{ route('results.destroy', $result->id) }}" method="POST" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        @endforeach
-    </ul>
+    <div class="container">
+        <h1>Results</h1>
+        <a href="{{ route('results.create') }}" class="btn btn-primary mb-3">Create New Result</a>
+        <div class="list-group">
+            @foreach ($results as $result)
+                <a href="{{ route('results.show', $result->id) }}" class="list-group-item list-group-item-action">
+                    {{ $result->user->name }} - {{ $result->score }} - {{ $result->grade }}
+                </a>
+            @endforeach
+        </div>
+    </div>
 @endsection
