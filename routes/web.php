@@ -9,8 +9,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', function () {
-    return view('home'); 
-})->name('home')->middleware('auth');
+    return view('landing'); 
+})->name('landing')->middleware('auth');
 
 // Profile Routes
 Route::middleware('auth')->group(function () {

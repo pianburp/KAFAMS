@@ -19,13 +19,6 @@
                     rows="3">{{ $item->program_description  }}</textarea>
             </div>
             <div class="mb-3">
-                <label for="statusSelect" class="form-label">Status</label>
-                <select class="form-select" id="statusSelect" name="program_status">
-                    <option value="1" {{ $item->program_status == 1 ? 'selected' : '' }}>Active</option>
-                    <option value="0" {{ $item->program_status == 0 ? 'selected' : '' }}>Inactive</option>
-                </select>
-            </div>
-            <div class="mb-3">
                 <label for="dateInput" class="form-label">Date</label>
                 <input type="date" class="form-control" id="dateInput" name="program_date" value="{{ $item->program_date }}">
             </div>

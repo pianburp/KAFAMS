@@ -34,19 +34,17 @@ class activityController extends Controller
         $validatedData = $request->validate([
             'program_name' => 'required|string|max:255',
             'program_description' => 'required|string',
-            'program_status' => 'required|boolean',
             'program_date' => 'required|date',
         ]);
 
         // Create and save the new program using the correct model name
-        $program = new Programs();  // Assuming your model is named 'Program'
+        $program = new Programs();  
         $program->program_name = $validatedData['program_name'];
         $program->program_description = $validatedData['program_description'];
-        $program->program_status = $validatedData['program_status'];
         $program->program_date = $validatedData['program_date'];
         $program->save();
 
-        return redirect()->route('manageActivity')->with('success', 'Program has been saved successfully!');
+        return redirect()->route('manageActivity')->with('success', 'Activity has been saved successfully!');
     }
 
 
@@ -56,7 +54,6 @@ class activityController extends Controller
         $validatedData = $request->validate([
             'program_name' => 'required|string|max:255',
             'program_description' => 'required|string',
-            'program_status' => 'required|boolean',
             'program_date' => 'required|date',
         ]);
 
@@ -64,7 +61,6 @@ class activityController extends Controller
         $program = Programs::findOrFail($id);
         $program->program_name = $validatedData['program_name'];
         $program->program_description = $validatedData['program_description'];
-        $program->program_status = $validatedData['program_status'];
         $program->program_date = $validatedData['program_date'];
         $program->save();
 
@@ -78,14 +74,14 @@ class activityController extends Controller
 
         // Check if the program was found
         if (!$program) {
-            return redirect()->route('manageActivity')->with('error', 'Program not found.');
+            return redirect()->route('manageActivity')->with('error', 'Activity not found.');
         }
 
         // Delete the program
         $program->delete();
 
         // Redirect back to a specific route with a success message
-        return redirect()->route('manageActivity')->with('success', 'Program has been deleted successfully!');
+        return redirect()->route('manageActivity')->with('success', 'Activity has been deleted successfully!');
     }
 
 }

@@ -22,12 +22,10 @@ class DatabaseSeeder extends Seeder
             'password'=> bcrypt('masammanis1234'),
         ]);
         Programs::factory()->create([
-            'program_name' => 'Having Wundhu',
-            'program_description' => 'A detailed session on having wudhu.',
-            'program_status' => true,  // Set to true for active
+            'program_name' => 'Having Wudhu',
+            'program_description' => 'A detailed session on having wudhu for Standard 1 students.',
+            'program_status' => false,  
             'program_date' => now()->toDateString()
         ]);
-
-        Programs::factory()->count(10)->create();
     }
 }

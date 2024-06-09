@@ -18,14 +18,6 @@
                         <textarea class="form-control" id="descriptionInput" name="program_description" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="statusSelect" class="form-label">Status</label>
-                        <select class="form-select" id="statusSelect" name="program_status">
-                            <option value="" disabled selected>Choose...</option>
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
                         <label for="dateInput" class="form-label">Date</label>
                         <input type="date" class="form-control" id="dateInput" name="program_date">
                     </div>

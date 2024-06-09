@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('program_name', 255); 
             $table->text('program_description'); 
-            $table->boolean('program_status'); 
+            $table->boolean('program_status')->default(false); 
             $table->date('program_date');
             $table->timestamps();
         });
