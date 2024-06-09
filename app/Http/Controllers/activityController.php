@@ -7,16 +7,24 @@ use App\Models\Programs;
 
 class activityController extends Controller
 {
-    public function index(){
-        $item = Programs::all();  
-        return view('manageActivity.activitiesPage', compact('item'));  
+    public function index()
+    {
+        $item = Programs::all();
+        return view('manageActivity.activitiesPage', compact('item'));
     }
 
-    public function edit(){
-        return view('manageActivity.activityEdit');
-    }
+    public function edit($id)
+{
+    // Fetch the program by its ID
+    $item = Programs::findOrFail($id); // Use findOrFail to automatically handle the case where the program doesn't exist
 
-    public function create(){
+    // Pass the program data to the view
+    return view('manageActivity.editActivities', compact('item'));
+}
+
+
+    public function create()
+    {
         return view('manageActivity.activitiesForm');
     }
 
@@ -30,19 +38,20 @@ class activityController extends Controller
             'program_date' => 'required|date',
         ]);
 
-        // Create and save the new program
-        $program = new Programs();
+        // Create and save the new program using the correct model name
+        $program = new Programs();  // Assuming your model is named 'Program'
         $program->program_name = $validatedData['program_name'];
         $program->program_description = $validatedData['program_description'];
         $program->program_status = $validatedData['program_status'];
         $program->program_date = $validatedData['program_date'];
         $program->save();
 
-        // Redirect to a specific route after saving, with a success message
-        return redirect()->route('manageActivity.activitiesPage')->with('success', 'Program has been saved successfully!');
+        return redirect()->route('manageActivity')->with('success', 'Program has been saved successfully!');
     }
 
-    public function update(Request $request, $id){
+
+    public function update(Request $request, $id)
+    {
         // Validate the incoming data
         $validatedData = $request->validate([
             'program_name' => 'required|string|max:255',
@@ -60,6 +69,23 @@ class activityController extends Controller
         $program->save();
 
         // Redirect to a specific route after saving, with a success message
-        return redirect()->route('manageActivity.activitiesPage')->with('success', 'Activity has been updated successfully!');
+        return redirect()->route('manageActivity')->with('success', 'Activity has been updated successfully!');
     }
+    public function delete($id)
+    {
+        // Find the program by ID
+        $program = Programs::find($id);
+
+        // Check if the program was found
+        if (!$program) {
+            return redirect()->route('manageActivity')->with('error', 'Program not found.');
+        }
+
+        // Delete the program
+        $program->delete();
+
+        // Redirect back to a specific route with a success message
+        return redirect()->route('manageActivity')->with('success', 'Program has been deleted successfully!');
+    }
+
 }
