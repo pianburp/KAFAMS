@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Programs extends Model
 {
-    use HasFactory;
+    protected $table = 'programs';
     protected $fillable = ['program_name', 'program_description', 'program_status', 'program_date'];
     protected $casts = [
         'program_date' => 'datetime',
