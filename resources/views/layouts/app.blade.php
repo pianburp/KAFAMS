@@ -23,6 +23,17 @@
     
     <!-- Custom CSS for image sizing -->
     <style>
+
+        main, #app, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-section {
+            padding-bottom: 0; /* Or adjust to your desired value */
+        }
+
+
         .service-image {
             width: 100%;
             height: 300px;
@@ -35,7 +46,7 @@
         <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">KAFA Management</a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">KAFAMS</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -72,21 +83,17 @@
             </div>
         </div>
     </nav>
-
     <!-- CONTENT -->
         <main class="py-4">
             @yield('content')
         </main>
-
     </div>
-
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
         <div class="container">
             Copyright &copy; KAFA Management System 2024
         </div>
     </footer>
-
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>

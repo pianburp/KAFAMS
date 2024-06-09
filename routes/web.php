@@ -2,10 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\StaffDashboardController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController; // Import your RegisterController
 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+Route::get('/staff/dashboard', [StaffDashboardController::class, 'index'])->name('staff.dashboard');
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::resource('users', UserController::class);
-
-
 Route::get('/', function () {
     return view('welcome');
 });
