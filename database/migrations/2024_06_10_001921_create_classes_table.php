@@ -8,21 +8,23 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('assessments', function (Blueprint $table) {
+        Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('program_id');
-            $table->enum('assessment_type', ['exam', 'project', 'quiz', 'assignment', 'presentation']); // Adjust types as needed
-            $table->text('description');
-            $table->date('due_date');
+            $table->unsignedBigInteger('instructor_id');
+            $table->date('start_date');
+            $table->date('end_date')->nullable(); // Allow null for ongoing classes
+            $table->string('location');
             $table->timestamps(); // Adds created_at and updated_at columns
 
-            // Define foreign key constraint
+            // Define foreign key constraints
             $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
+            $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('assessments');
+        Schema::dropIfExists('classes');
     }
 };
