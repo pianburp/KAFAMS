@@ -1,166 +1,123 @@
-@extends('layouts.app')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="KAFA Management System">
+    <meta name="author" content="KAFA Development Team">
 
-@section('content')
-<section class="bg-gray-50 min-h-screen flex items-center justify-center">
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/2">
-        <h1 class="text-2xl font-semibold text-center mb-6 text-gray-800">Login</h1>
+    <title>Welcome to KAFA Management System</title>
 
-        <form method="POST" action="{{ route('login') }}">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <!-- Custom fonts for this template -->
+    <link href="{{ asset('fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/grayscale.min.css') }}" rel="stylesheet">
+    
+    <!-- Custom CSS for image sizing -->
+    <style>
+
+        main, #app, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-section {
+            padding-bottom: 0; /* Or adjust to your desired value */
+        }
+
+
+        .service-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<section class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md"> <div class="bg-white p-8 rounded-lg shadow-md">
+
+        <h1 class="pt-5 text-3xl font-bold text-center mb-6 text-gray-800">
+            Welcome Back!
+        </h1>
+
+        <div class="container p-5 items-center justify-center">
+            <form method="POST" action="{{ route('login') }}" class="space-y-4">
             @csrf
 
-            <div class="mb-4">
-                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">{{ __('Email Address') }}</label>
-                <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">
+                    Email Address
+                </label>
+                <input 
+                    id="email" 
+                    type="email" 
+                    name="email" 
+                    value="{{ old('email') }}"
+                    required 
+                    autofocus
+                    class="m-3 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-opacity-50 focus:ring-indigo-500"
+                >
                 @error('email')
-                    <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                    <p class="text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-4">
-                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">{{ __('Password') }}</label>
-                <input id="password" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password') border-red-500 @enderror" name="password" required autocomplete="current-password">
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">
+                    Password
+                </label>
+                <input 
+                    id="password" 
+                    type="password" 
+                    name="password" 
+                    required 
+                    autocomplete="current-password"
+                    class="m-5 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-opacity-50 focus:ring-indigo-500"
+                >
                 @error('password')
-                    <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <label class="form-check-label ml-2 text-sm text-gray-600" for="remember">
-                        {{ __('Remember Me') }}
+                    <input 
+                        id="remember_me" 
+                        type="checkbox" 
+                        name="remember" 
+                        class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                    >
+                    <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+                        Remember me
                     </label>
                 </div>
+                
                 @if (Route::has('password.request'))
-                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
+                    <a class="text-sm text-indigo-600 hover:text-indigo-900" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
                     </a>
                 @endif
             </div>
-          
 
-            <div class="flex items-center justify-center">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    {{ __('Login') }}
+            <div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium btn-primary text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Sign in
                 </button>
             </div>
-
         </form>
-    </div>
-</section>
-@endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
-    </div>
-</div>
-@endsection -->
+
+        <p class="mt-4 text-center text-sm text-gray-600">
+            Don't have an account? 
+            <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                Sign up
+            </a>
+        </p>
+    </div></div>
+</section>

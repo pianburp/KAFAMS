@@ -46,7 +46,7 @@
         <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">KAFAMS</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ route('login') }}">KAFAMS</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -67,18 +67,23 @@
                         <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                     </li>
                     <!-- Conditional Rendering for Login Button -->
-                    @guest
+                    <!-- @guest -->
                         <li class="nav-item">
-                            <a class="nav-link btn btn-primary text-white" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('login') }}">Login</a>
+                            
                         </li>
-                    @else
+                        <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger btn  text-green" href="{{ route('register') }}">Sign Up</a>
+                            
+                        </li>
+                    <!-- @else -->
                         <li class="nav-item">
                             <a class="nav-link btn btn-primary text-white" 
                                href="{{ route(auth()->user()->isAdmin() ? 'admin.dashboard' : 'home') }}">
                                Dashboard
                             </a>
                         </li>
-                    @endguest
+                    <!-- @endguest -->
                 </ul>
             </div>
         </div>
@@ -89,7 +94,7 @@
         </main>
     </div>
     <!-- Footer -->
-    <footer class="bg-black small text-center text-white-50">
+    <footer class="bg-black small text-center text-white-50 mt-5">
         <div class="container">
             Copyright &copy; KAFA Management System 2024
         </div>

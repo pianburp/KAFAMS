@@ -18,8 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('user_type', ['student', 'staff', 'admin']);
-            $table->string('phone_number', 20);
-            $table->rememberToken();
+            
+            
             $table->timestamps();
         });
 
