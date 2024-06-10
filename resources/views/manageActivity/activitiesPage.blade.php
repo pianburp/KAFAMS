@@ -17,10 +17,11 @@
             {{ session('error') }}
         </div>
     @endif
-<div class="d-flex justify-content-between align-items-center">
+
     <h2 class="card-title mb-0">View Activity</h2>
+    <br>
     <a href="{{ route('manageActivity/create') }}" class="btn btn-success">Create Activity</a>
-</div>
+
 <div class="table-responsive">
     <table class="table">
         <thead>

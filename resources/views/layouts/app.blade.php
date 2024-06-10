@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,17 +21,19 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/grayscale.min.css') }}" rel="stylesheet">
-    
+
     <!-- Custom CSS for image sizing -->
     <style>
-
-        main, #app, body {
+        main,
+        #app,
+        body {
             margin: 0;
             padding: 0;
         }
 
         .about-section {
-            padding-bottom: 0; /* Or adjust to your desired value */
+            padding-bottom: 0;
+            /* Or adjust to your desired value */
         }
 
 
@@ -41,54 +44,61 @@
         }
     </style>
 </head>
+
 <body id="page-top">
     <div id="app">
         <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{ route('login') }}">KAFAMS</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="{{ route('login') }}">KAFAMS</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                    </li>
-                    <!-- Conditional Rendering for Login Button -->
-                    <!-- @guest -->
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                        </li>
+                        <!-- Conditional Rendering for Login Button -->
+                        <!-- @guest -->
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('login') }}">Login</a>
-                            
+
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger btn  text-green" href="{{ route('register') }}">Sign Up</a>
-                            
+                            <a class="nav-link js-scroll-trigger btn  text-green" href="{{ route('register') }}">Sign
+                                Up</a>
+
                         </li>
-                    <!-- @else -->
+                        <!-- @else -->
                         <li class="nav-item">
-                            <a class="nav-link btn btn-primary text-white" 
-                               href="{{ route(auth()->user()->isAdmin() ? 'admin.dashboard' : 'home') }}">
-                               Dashboard
+                            <a class="nav-link btn btn-primary text-white"
+                                href="{{ route(auth()->user()->isAdmin() ? 'admin.dashboard' : 'home') }}">
+                                Dashboard
                             </a>
                         </li>
-                    <!-- @endguest -->
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary text-white" href="{{ route('manageActivity') }}">
+                                Manage Activity
+                            </a>
+                        </li>
+                        <!-- @endguest -->
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <!-- CONTENT -->
+        </nav>
+        <!-- CONTENT -->
         <main class="py-4">
             @yield('content')
         </main>
@@ -110,4 +120,5 @@
     <script src="{{ asset('js/welcometobelarus.min.js') }}"></script>
     <script src="{{ asset('js/map.js') }}"></script>
 </body>
+
 </html>
