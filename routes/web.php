@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ResultController;
+
+
 
 // Registration routes
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -28,7 +29,7 @@ Route::get('/', function () {
     return view('welcome'); // Assuming you have a Blade template named 'welcome.blade.php'
 });
 
-Route::get('/results', [ResultController::class, 'index'])->name('results.index');
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
 Route::resource('users', UserController::class);
@@ -37,6 +38,22 @@ Route::resource('users', UserController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// In your web.php routes file:
+
+
+
+Route::get('/manageResult', [App\Http\Controllers\ResultController::class, 'index'])->name('manageResult');
+
+Route::get('/manageResult/create', [App\Http\Controllers\ResultController::class, 'create'])->name('manageResult.create');
+Route::post('/manageResult/store', [App\Http\Controllers\ResultController::class,'store'])->name('manageResult.store');
+
+Route::get('/manageResult/{id}/edit', [App\Http\Controllers\ResultController::class, 'edit'])->name('manageResult.edit');
+Route::put('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'update'])->name('manageResult.update');
+
+Route::delete('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'delete'])->name('manageResult.delete');
+
 
 // Activity management routes
 Route::get('/manageActivity/{id}/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('manageActivity/edit');

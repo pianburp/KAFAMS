@@ -53,10 +53,6 @@ main {
   margin-top: 80px; 
   py-4; 
 }
-body {
-  background-color: #228B22; /* Example light gray background */
-}
-
 
 
     </style>
@@ -79,6 +75,25 @@ body {
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#home">Home</a>
                         </li>
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="{{ route('manageResult') }}">View Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="{{ route('manageActivity') }}">Manage Activity</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="#contact">Bulletin</a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="nav-link btn btn-primary text-white" href="#" onclick="event.preventDefault(); this.closest('form').submit();">Sign Out</a>
+                                </form>
+                            </li>
+                        @else
+                        <ul class="navbar-nav ml-auto">
+                        
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#about">About</a>
                         </li>
@@ -97,10 +112,14 @@ body {
                                 Up
                             </a>
                         </li>
+                    
+                           
+                        @endauth
                     </ul>
                 </div>
             </div>
         </nav>
+
         <!-- CONTENT -->
         <main class="py-4">
             @yield('content')

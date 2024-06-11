@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+<head>
+    <style>
+        footer {
+  position: relative;
+  bottom: 0;
+  width: 100%; /* Ensures footer spans the full width */
+}
+    </style>
+</head>
     <!-- Header -->
     <header class="masthead" id="home">
         <div class="container d-flex h-100 align-items-center">

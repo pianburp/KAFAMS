@@ -20,16 +20,24 @@ class ResultController extends Controller
 
     public function store(Request $request)
     {
+        // Validate the incoming request data
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'assessment_id' => 'required|exists:assessments,id',
+            'user_id' => 'required|integer|exists:users,id',
+            'assessment_id' => 'required|integer|exists:assessments,id',
             'score' => 'required|numeric',
-            'grade' => 'required|in:A,B,C,D,F',
+            'grade' => 'required|string|max:1'
         ]);
 
-        Result::create($request->all());
+        // Create a new result instance and fill it with validated data
+        $result = new Result();
+        $result->user_id = $request->input('user_id');
+        $result->assessment_id = $request->input('assessment_id');
+        $result->score = $request->input('score');
+        $result->grade = $request->input('grade');
+        $result->save(); // Save the result to the database
 
-        return redirect()->route('results.index')->with('success', 'Result created successfully.');
+        // Redirect to a page, e.g., the index page with a success message
+        return redirect()->route('manageResult')->with('success', 'Result created successfully!');
     }
 
     public function show(Result $result)
