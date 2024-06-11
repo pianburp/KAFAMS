@@ -2,26 +2,43 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\StudentDashboardController;
-use App\Http\Controllers\StaffDashboardController;
-use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController; // Import your RegisterController
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ResultController;
 
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
-Route::get('/staff/dashboard', [StaffDashboardController::class, 'index'])->name('staff.dashboard');
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-Route::resource('users', UserController::class);
+// Registration routes
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
+
+// Define the student, staff, and admin dashboard routes
+Route::get('/student/dashboard', function () {
+    return view('student.dashboard');
+})->name('student.dashboard')->middleware('auth');
+
+Route::get('/staff/dashboard', function () {
+    return view('staff.dashboard');
+})->name('staff.dashboard')->middleware('auth');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard')->middleware('auth');
+
+// Other routes
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); // Assuming you have a Blade template named 'welcome.blade.php'
 });
 
+Route::get('/results', [ResultController::class, 'index'])->name('results.index');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+Route::resource('users', UserController::class);
+
+// Auth routes
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Activity management routes
 Route::get('/manageActivity/{id}/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('manageActivity/edit');
 Route::get('/manageActivity', [App\Http\Controllers\activityController::class, 'index'])->name('manageActivity');
 Route::get('/manageActivity/create', [App\Http\Controllers\activityController::class, 'create'])->name('manageActivity/create');

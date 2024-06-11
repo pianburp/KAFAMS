@@ -36,21 +36,39 @@
             /* Or adjust to your desired value */
         }
 
-
+        footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; /* Ensures footer spans the full width */
+}
         .service-image {
             width: 100%;
             height: 300px;
             object-fit: cover;
         }
+        nav {
+  position: static;
+}
+main {
+  margin-top: 80px; 
+  py-4; 
+}
+body {
+  background-color: #228B22; /* Example light gray background */
+}
+
+
+
     </style>
 </head>
 
 <body id="page-top">
     <div id="app">
+    
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="{{ route('login') }}">KAFAMS</a>
+                <a class="navbar-brand js-scroll-trigger" href="#welcome">KAFAMS</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -71,29 +89,14 @@
                             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                         </li>
                         <!-- Conditional Rendering for Login Button -->
-                        <!-- @guest -->
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('login') }}">Login</a>
-
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger btn  text-green" href="{{ route('register') }}">Sign
-                                Up</a>
-
-                        </li>
-                        <!-- @else -->
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-primary text-white"
-                                href="{{ route(auth()->user()->isAdmin() ? 'admin.dashboard' : 'home') }}">
-                                Dashboard
+                            <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">Sign
+                                Up
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-primary text-white" href="{{ route('manageActivity') }}">
-                                Manage Activity
-                            </a>
-                        </li>
-                        <!-- @endguest -->
                     </ul>
                 </div>
             </div>

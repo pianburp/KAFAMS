@@ -23,12 +23,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type', // Assuming this is your user type field
     ];
 
-    public function isAdmin()
-        {
-            return $this->user_type === 'admin';
-        }
+    
 
 
     /**

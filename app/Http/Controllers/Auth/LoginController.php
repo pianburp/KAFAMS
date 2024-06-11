@@ -14,23 +14,25 @@ class LoginController extends Controller
     // ... your existing code ...
 
     public function authenticate(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-        
-        if (auth()->attempt($credentials)) {
-            $user = auth()->user();
+{
+  $credentials = $request->only('email', 'password');
+  
+  if (auth()->attempt($credentials)) {
+    $user = auth()->user();
 
-            if ($user->user_type === 'admin') {
-                return redirect()->route('admin.dashboard'); 
-            } elseif ($user->user_type === 'staff') {
-                return redirect()->route('staff.dashboard');
-            } else {
-                return redirect()->route('student.dashboard'); 
-            }
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+    if ($user->user_type === 'admin') {
+      return redirect()->route('admin.dashboard'); 
+    } elseif ($user->user_type === 'staff') {
+      return redirect()->route('staff.dashboard');
+    } else {
+      return redirect()->route('student.dashboard'); 
     }
+  }
+
+  return back()->withErrors([
+    'email' => 'The provided credentials do not match our records.',
+  ]);
+}
+
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bulletins;
 use Illuminate\Http\Request;
 use App\Models\Enrollment; // Assuming you have an Enrollment model
 use App\Models\Result;     // Assuming you have a Result model
