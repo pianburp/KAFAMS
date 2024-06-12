@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'user_type' => ['required', 'string'],
+            'user_type' => ['required', 'string', 'in:student,staff,admin'], // Validate user type
         ]);
     }
 
@@ -45,21 +45,27 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        // Validate the request data
+        $this->validator($request->all())->validate();
+
+        // Check if the email already exists
         if (User::where('email', $request->input('email'))->exists()) {
             return redirect()->back()->withInput()->withErrors(['email' => 'The email address is already registered.']);
         }
 
-        $this->validator($request->all())->validate();
-
+        // Create the user
         event(new \Illuminate\Auth\Events\Registered($user = $this->create($request->all())));
 
+        // Log the user in
         $this->guard()->login($user);
 
+        // Redirect based on user type
         return $this->registered($request, $user) ?: redirect($this->redirectPath());
     }
 
     protected function registered(Request $request, $user)
     {
+        // Redirect based on user type after registration
         switch ($user->user_type) {
             case 'student':
                 return redirect()->route('student.dashboard');

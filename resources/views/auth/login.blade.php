@@ -1,45 +1,16 @@
+@extends('layouts.app')
+
+@section('content')
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="KAFA Management System">
-    <meta name="author" content="KAFA Development Team">
-
-    <title>Welcome to KAFA Management System</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-    <!-- Custom fonts for this template -->
-    <link href="{{ asset('fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/grayscale.min.css') }}" rel="stylesheet">
-    
-    <!-- Custom CSS for image sizing -->
     <style>
-
-        main, #app, body {
-            margin: 0;
-            padding: 0;
-        }
-
-        .about-section {
-            padding-bottom: 0; /* Or adjust to your desired value */
-        }
-
-
-        .service-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
+        footer {
+  position: relative;
+  bottom: 0;
+  width: 100%; /* Ensures footer spans the full width */
+}
     </style>
 </head>
-<section class="bg-gray-100 min-h-screen flex items-center justify-center">
+<section class=" m-5 p-5 bg-gray-100 min-h-screen flex items-center justify-center">
     <div class="w-full max-w-md"> <div class="bg-white p-8 rounded-lg shadow-md">
 
         <h1 class="pt-5 text-3xl font-bold text-center mb-6 text-gray-800">
@@ -112,12 +83,13 @@
             </div>
         </form>
         </div>
-
-        <p class="mt-4 text-center text-sm text-gray-600">
+        <p class="mt-4 mb-4 text-center text-sm text-gray-600 ">
             Don't have an account? 
             <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
                 Sign up
             </a>
         </p>
+
     </div></div>
 </section>
+@endsection

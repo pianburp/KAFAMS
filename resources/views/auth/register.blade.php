@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<head>
-    <style>
-        footer {
-  position: relative;
-  bottom: 0;
-  width: 100%; /* Ensures footer spans the full width */
-}
-    </style>
-</head>
+
 <div class="p-5 m-5">
 <section class="bg-gray-50 min-h-screen flex items-center justify-center p-3 m-3">
     <div class="container p-3">

@@ -23,7 +23,7 @@ class Result extends Model
 
     public function assessment()
     {
-        return $this->belongsTo(Assessment::class, 'assessment_id', 'assessment_id');
+        return $this->belongsTo(Assessment::class);
     }
     
 }

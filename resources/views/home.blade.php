@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -71,7 +72,7 @@
                             <a class="nav-link js-scroll-trigger" href="#home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="{{ route('manageResult') }}">Results</a>
+                            <a class="nav-link js-scroll-trigger" href="{{ route('manageResult.index') }}">Results</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="{{ route('manageActivity') }}">Manage Activity</a>
@@ -129,4 +130,3 @@
         Copyright &copy; KAFA Management System 2024
     </div>
 </section>
-@endsection

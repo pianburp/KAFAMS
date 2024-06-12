@@ -11,7 +11,9 @@ class Kernel extends HttpKernel
      *
      * These middleware are run during every request to your application.
      */
-    protected $middleware = [
+    
+    
+     protected $middleware = [
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
@@ -57,6 +59,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is_admin' => \App\Http\Middleware\IsAdmin::class,
+        'isStaff' => \App\Http\Middleware\IsStaff::class,
+        'isStudent' => \App\Http\Middleware\IsStudent::class,
         
     ];
 

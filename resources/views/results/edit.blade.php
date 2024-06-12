@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Edit Result</h1>
-        <form action="{{ route('results.update', $result->id) }}" method="POST">
+        <form action="{{ route('manageResult.update', $result->id) }}" method="POST">
             @csrf
             @method('PUT')
             

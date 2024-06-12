@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('assessments', function (Blueprint $table) {
-            $table->id('assessment_id');
+            $table->id();
             $table->unsignedBigInteger('program_id');
             $table->enum('assessment_type', ['exam', 'project', 'quiz', 'assignment', 'presentation']); // Adjust types as needed
             $table->text('description');

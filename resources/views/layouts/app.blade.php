@@ -24,11 +24,19 @@
 
     <!-- Custom CSS for image sizing -->
     <style>
-        main,
-        #app,
+        main{
+            flex: 1;
+        }
+       
         body {
             margin: 0;
-            padding: 0;
+            flex: 1;
+            padding: 120;}
+
+            #app{
+            display: flex;
+    min-height: 100vh; /* Make the app container fill the viewport height */
+    flex-direction: column;
         }
 
         .about-section {
@@ -37,7 +45,7 @@
         }
 
         footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%; /* Ensures footer spans the full width */
 }
@@ -50,7 +58,7 @@
   position: static;
 }
 main {
-  margin-top: 80px; 
+   
   py-4; 
 }
 .navbar {
@@ -79,9 +87,10 @@ main {
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#home">Home</a>
                         </li>
+                        @endguest
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="{{ route('manageResult') }}">Results</a>
+                                <a class="nav-link js-scroll-trigger" href="{{ route('manageResult.index') }}">Results</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" href="{{ route('manageActivity') }}">Manage Activity</a>
@@ -95,7 +104,8 @@ main {
                                     <a class="nav-link btn btn-primary text-white" href="#" onclick="event.preventDefault(); this.closest('form').submit();">Sign Out</a>
                                 </form>
                             </li>
-                        @else
+                            @endauth
+                            @guest
                         <ul class="navbar-nav ml-auto">
                         
                         <li class="nav-item">
@@ -115,15 +125,24 @@ main {
                             <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">SignUp
                             </a>
                         </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
         </nav>
 
         <!-- CONTENT -->
-        <main class="py-4">
+        <main class="py-4 mt-5 pt-5">
             @yield('content')
         </main>
+
+        <!-- Footer -->
+        <footer class="bg-black small text-center text-white-50 mt-5">
+            <div class="container">
+                Copyright &copy; KAFA Management System 2024
+            </div>
+        </footer>
+
     </div>
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('jquery/jquery.min.js') }}"></script>
