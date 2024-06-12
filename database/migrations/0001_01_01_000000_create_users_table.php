@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('remember_token', 100)->nullable();
             //$table->boolean('is_admin')->nullable();
-            $table->enum('user_type', ['student', 'staff', 'admin']);
+            //$table->enum('user_type', ['student', 'staff', 'admin']);
             
             
             $table->timestamps();

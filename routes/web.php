@@ -36,35 +36,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-<<<<<<< HEAD
-
-// Manage Results
-
-// Middleware
-Route::middleware(['auth', 'isStaff'])->group(function () {
-    Route::get('/manageResult', [App\Http\Controllers\ResultController::class, 'index'])->name('manageResult');
-    Route::get('/manageResult/create', [App\Http\Controllers\ResultController::class, 'create'])->name('manageResult.create');
-    Route::post('/manageResult/store', [App\Http\Controllers\ResultController::class, 'store'])->name('manageResult.store');
-    Route::get('/manageResult/{id}/edit', [App\Http\Controllers\ResultController::class, 'edit'])->name('manageResult.edit');
-    Route::put('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'update'])->name('manageResult.update');
-    Route::delete('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'destroy'])->name('manageResult.delete');
-});
-
-Route::get('/results/subject/{subjectId}', [App\Http\Controllers\ResultController::class, 'showBySubject'])->middleware(['auth', 'isStudent'])->name('results.showBySubject');
-
-Route::get('/manageResult', [App\Http\Controllers\ResultController::class, 'index'])->name('manageResult');
-
-Route::get('/manageResult/create', [App\Http\Controllers\ResultController::class, 'create'])->name('manageResult.create');
-Route::post('/manageResult/store', [App\Http\Controllers\ResultController::class,'store'])->name('manageResult.store');
-
-Route::get('/manageResult/{id}/edit', [App\Http\Controllers\ResultController::class, 'edit'])->name('manageResult.edit');
-Route::put('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'update'])->name('manageResult.update');
-
-Route::delete('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'delete'])->name('manageResult.delete');
-
-
-=======
->>>>>>> a8f6591bc11ea46b040eb1aff34f2d3daeaacc45
 // Activity management routes
 Route::get('/manageActivity/{id}/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('manageActivity/edit');
 Route::get('/manageActivity', [App\Http\Controllers\activityController::class, 'index'])->name('manageActivity');
