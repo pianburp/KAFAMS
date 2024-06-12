@@ -113,23 +113,20 @@
         </div>
     </div>
 </div>
+</div>
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{{ asset('jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{{ asset('js/welcometobelarus.min.js') }}"></script>
+<script src="{{ asset('js/map.js') }}"></script>
+<section id="contact" class="contact-section bg-black">
+    <div class="container">
+        Copyright &copy; KAFA Management System 2024
     </div>
-    <!-- Footer -->
-    <footer class="bg-black small text-center text-white-50 mt-5">
-        <div class="container">
-            Copyright &copy; KAFA Management System 2024
-        </div>
-    </footer>
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ asset('jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="{{ asset('jquery-easing/jquery.easing.min.js') }}"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="{{ asset('js/welcometobelarus.min.js') }}"></script>
-    <script src="{{ asset('js/map.js') }}"></script>
-</body>
-
-</html>
+</section>
+@endsection

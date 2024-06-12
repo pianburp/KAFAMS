@@ -75,6 +75,7 @@ main {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+                        @guest
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#home">Home</a>
                         </li>
@@ -111,13 +112,9 @@ main {
                             <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">Sign
-                                Up
+                            <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">SignUp
                             </a>
                         </li>
-                    
-                           
-                        @endauth
                     </ul>
                 </div>
             </div>
@@ -128,12 +125,6 @@ main {
             @yield('content')
         </main>
     </div>
-    <!-- Footer -->
-    <footer class="bg-black small text-center text-white-50 mt-5">
-        <div class="container">
-            Copyright &copy; KAFA Management System 2024
-        </div>
-    </footer>
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
