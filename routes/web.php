@@ -5,6 +5,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\HomeController;
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 
 // Registration routes
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -36,7 +43,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-<<<<<<< HEAD
+
 
 // Manage Results
 
@@ -63,8 +70,6 @@ Route::put('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 
 Route::delete('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'delete'])->name('manageResult.delete');
 
 
-=======
->>>>>>> a8f6591bc11ea46b040eb1aff34f2d3daeaacc45
 // Activity management routes
 Route::get('/manageActivity/{id}/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('manageActivity/edit');
 Route::get('/manageActivity', [App\Http\Controllers\activityController::class, 'index'])->name('manageActivity');

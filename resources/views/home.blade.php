@@ -129,4 +129,3 @@
         Copyright &copy; KAFA Management System 2024
     </div>
 </section>
-@endsection

@@ -75,11 +75,10 @@ main {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#home">Home</a>
-                        </li>
                         @auth
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{{ route('home') }}">Home</a>
+                        </li>
                             <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" href="{{ route('manageResult') }}">Results</a>
                             </li>
@@ -97,7 +96,9 @@ main {
                             </li>
                         @else
                         <ul class="navbar-nav ml-auto">
-                        
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#home">Home</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#about">About</a>
                         </li>
@@ -115,6 +116,7 @@ main {
                             <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">SignUp
                             </a>
                         </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
