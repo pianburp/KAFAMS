@@ -5,6 +5,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\HomeController;
+
+// Main routes
+Route::get('/', function () {
+    return view('welcome'); 
+});
 
 // Registration routes
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -19,14 +25,12 @@ Route::get('/staff/dashboard', function () {
     return view('staff.dashboard');
 })->name('staff.dashboard')->middleware('auth');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard')->middleware('auth');
-
-// Other routes
-Route::get('/', function () {
-    return view('welcome'); // Assuming you have a Blade template named 'welcome.blade.php'
+//admin
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('admin-home', [HomeController::class, 'adminHome'])->name('admin.home');
 });
+
+
 
 Route::get('/results', [ResultController::class, 'index'])->name('results.index');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -37,6 +41,13 @@ Route::resource('users', UserController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth', 'is_admin']], function () {
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
+});
+
 
 // Activity management routes
 Route::get('/manageActivity/{id}/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('manageActivity/edit');

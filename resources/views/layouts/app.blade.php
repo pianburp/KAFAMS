@@ -76,6 +76,7 @@ body {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+                        @guest
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#home">Home</a>
                         </li>
@@ -93,10 +94,31 @@ body {
                             <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">Sign
-                                Up
+                            <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">SignUp
                             </a>
                         </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#">View Results</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{{ route('manageActivity') }}">Manage Activity</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                        </li>
+                        @auth
+                            <li class="nav-item">
+                                <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a class="nav-link btn btn-primary text-white" href="#" onclick="event.preventDefault(); this.closest('form').submit();">Sign Out</a>
+                                </form>
+                            </li>
+                        @endauth
+                        @endguest
                     </ul>
                 </div>
             </div>
@@ -106,12 +128,6 @@ body {
             @yield('content')
         </main>
     </div>
-    <!-- Footer -->
-    <footer class="bg-black small text-center text-white-50 mt-5">
-        <div class="container">
-            Copyright &copy; KAFA Management System 2024
-        </div>
-    </footer>
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
