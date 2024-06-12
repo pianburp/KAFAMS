@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-
+<head>
+    <style>
+        footer {
+  position: relative;
+  bottom: 0;
+  width: 100%; /* Ensures footer spans the full width */
+}
+    </style>
+</head>
 <div class="p-5 m-5">
-<section class="bg-gray-50 min-h-screen flex items-center justify-center">
+<section class="bg-gray-50 min-h-screen flex items-center justify-center p-3 m-3">
     <div class="container p-3">
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/2">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/2 p-3 m-3">
         <h1 class="pt-5 text-2xl font-semibold text-center mb-6 text-gray-800">Register</h1>
 
         <form method="POST" action="{{ route('register') }}">

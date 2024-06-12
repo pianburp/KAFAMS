@@ -53,16 +53,19 @@ main {
   margin-top: 80px; 
   py-4; 
 }
+.navbar {
+    background-color: #f8f9fa; 
+}
 
 
     </style>
 </head>
 
-<body id="page-top">
+<body id="page-top" class="bg-primary">
     <div id="app">
     
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="#welcome">KAFAMS</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -77,7 +80,7 @@ main {
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="{{ route('manageResult') }}">View Results</a>
+                                <a class="nav-link js-scroll-trigger" href="{{ route('manageResult') }}">Results</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" href="{{ route('manageActivity') }}">Manage Activity</a>

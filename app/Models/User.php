@@ -14,6 +14,21 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function isAdmin()
+    {
+        return $this->user_type === 'admin';
+    }
+
+    public function isStaff()
+    {
+        return $this->user_type === 'staff';
+    }
+    
+    public function isStudent()
+    {
+        return $this->user_type === 'student';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -51,4 +66,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function results()
+        {
+            return $this->hasMany(Result::class);
+        }
+
 }

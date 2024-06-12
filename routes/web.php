@@ -40,9 +40,19 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-// In your web.php routes file:
+// Manage Results
 
+// Middleware
+Route::middleware(['auth', 'isStaff'])->group(function () {
+    Route::get('/manageResult', [App\Http\Controllers\ResultController::class, 'index'])->name('manageResult');
+    Route::get('/manageResult/create', [App\Http\Controllers\ResultController::class, 'create'])->name('manageResult.create');
+    Route::post('/manageResult/store', [App\Http\Controllers\ResultController::class, 'store'])->name('manageResult.store');
+    Route::get('/manageResult/{id}/edit', [App\Http\Controllers\ResultController::class, 'edit'])->name('manageResult.edit');
+    Route::put('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'update'])->name('manageResult.update');
+    Route::delete('/manageResult/{id}', [App\Http\Controllers\ResultController::class, 'destroy'])->name('manageResult.delete');
+});
 
+Route::get('/results/subject/{subjectId}', [App\Http\Controllers\ResultController::class, 'showBySubject'])->middleware(['auth', 'isStudent'])->name('results.showBySubject');
 
 Route::get('/manageResult', [App\Http\Controllers\ResultController::class, 'index'])->name('manageResult');
 
