@@ -83,14 +83,6 @@ main {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#home">Home</a>
-                        </li>
-                        @endguest
-=======
->>>>>>> a32908bbc965f7561e832b5dcb64914177506d55
                         @auth
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="{{ route('home') }}">Home</a>
@@ -133,11 +125,7 @@ main {
                             <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">SignUp
                             </a>
                         </li>
-<<<<<<< HEAD
                         @endguest
-=======
-                        @endauth
->>>>>>> a32908bbc965f7561e832b5dcb64914177506d55
                     </ul>
                 </div>
             </div>
