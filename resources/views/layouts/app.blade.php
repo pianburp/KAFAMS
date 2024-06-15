@@ -36,42 +36,41 @@
             /* Or adjust to your desired value */
         }
 
-        footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%; /* Ensures footer spans the full width */
-}
         .service-image {
             width: 100%;
             height: 300px;
             object-fit: cover;
         }
+
         nav {
-  position: static;
-}
-main {
-  margin-top: 80px; 
-  py-4; 
-}
-.navbar {
-    background-color: #f8f9fa; 
-}
+            position: static;
+        }
 
+        main {
+            margin-top: 80px;
+        }
 
+        .navbar {
+            background-color: #f8f9fa;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%; /* Ensures footer spans the full width */
+        }
     </style>
 </head>
 
 <body id="page-top" class="bg-primary">
     <div id="app">
-    
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="#welcome">KAFAMS</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
@@ -79,25 +78,27 @@ main {
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#home">Home</a>
                         </li>
+                        @endguest
                         @auth
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="{{ route('manageResult') }}">Results</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="{{ route('manageActivity') }}">Manage Activity</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="#contact">Bulletin</a>
-                            </li>
-                            <li class="nav-item">
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a class="nav-link btn btn-primary text-white" href="#" onclick="event.preventDefault(); this.closest('form').submit();">Sign Out</a>
-                                </form>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{{ route('manageResult') }}">Results</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{{ route('manageActivity') }}">Manage
+                                Activity</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#contact">Bulletin</a>
+                        </li>
+                        <li class="nav-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a class="nav-link btn btn-primary text-white"
+                                    href="#" onclick="event.preventDefault(); this.closest('form').submit();">Sign
+                                    Out</a>
+                            </form>
+                        </li>
                         @else
-                        <ul class="navbar-nav ml-auto">
-                        
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#about">About</a>
                         </li>
@@ -107,14 +108,15 @@ main {
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                         </li>
-                        <!-- Conditional Rendering for Login Button -->
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link js-scroll-trigger btn text-green"
+                                href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger btn text-green" href="{{ route('register') }}">SignUp
-                            </a>
+                            <a class="nav-link js-scroll-trigger btn text-green"
+                                href="{{ route('register') }}">SignUp</a>
                         </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
@@ -125,6 +127,7 @@ main {
             @yield('content')
         </main>
     </div>
+
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>

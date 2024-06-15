@@ -4,7 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ResultController;
+use App\Http\Controllers\HomeController; // Added HomeController
+use App\Http\Controllers\ActivityController; // Corrected ActivityController
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Registration routes
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -19,27 +24,28 @@ Route::get('/staff/dashboard', function () {
     return view('staff.dashboard');
 })->name('staff.dashboard')->middleware('auth');
 
-//admin
+// Admin routes
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('admin-home', [HomeController::class, 'adminHome'])->name('admin.home');
 });
 
-
-
-
+// Login route
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
+// Resourceful route for users
 Route::resource('users', UserController::class);
 
-// Auth routes
+// Auth routes (Laravel default authentication routes)
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Home route
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Activity management routes
-Route::get('/manageActivity/{id}/edit', [App\Http\Controllers\activityController::class, 'edit'])->name('manageActivity/edit');
-Route::get('/manageActivity', [App\Http\Controllers\activityController::class, 'index'])->name('manageActivity');
-Route::get('/manageActivity/create', [App\Http\Controllers\activityController::class, 'create'])->name('manageActivity/create');
-Route::post('/manageActivity/store', [App\Http\Controllers\activityController::class,'store'])->name('manageActivity/store');
-Route::delete('/manageActivity/{id}', [App\Http\Controllers\activityController::class, 'delete'])->name('manageActivity/delete');
-Route::put('/manageActivity/{id}', [App\Http\Controllers\ActivityController::class, 'update'])->name('manageActivity/update');
+Route::get('/manageActivity/{id}/edit', [ActivityController::class, 'edit'])->name('manageActivity.edit'); // Changed to dot notation
+Route::get('/manageActivity', [ActivityController::class, 'index'])->name('manageActivity.index'); // Changed to dot notation
+Route::get('/manageActivity/create', [ActivityController::class, 'create'])->name('manageActivity.create'); // Changed to dot notation
+Route::post('/manageActivity/store', [ActivityController::class, 'store'])->name('manageActivity.store'); // Changed to dot notation
+Route::delete('/manageActivity/{id}', [ActivityController::class, 'delete'])->name('manageActivity.delete');
+Route::put('/manageActivity/{id}', [ActivityController::class, 'update'])->name('manageActivity.update');
+
